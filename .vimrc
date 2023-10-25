@@ -42,6 +42,17 @@ Plug 'pearofducks/ansible-vim'
 " Make vim pretty with nova-vim
 Plug 'sheerun/vim-polyglot'
 
+" vim-gitgutter, to see changes in files using git
+Plug 'airblade/vim-gitgutter'
+highlight clear SignColumn
+set signcolumn=number
+" Custom GitGutter Symbols
+let g:gitgutter_sign_added = '▋'
+let g:gitgutter_sign_modified = '▍'
+let g:gitgutter_sign_removed = '▊'
+
+
+
 " From vimrc
 
 Plug 'dracula/vim', { 'as': 'dracula' }
