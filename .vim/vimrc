@@ -1,0 +1,73 @@
+" NERDTree settings
+let NERDTreeMinimalUI = 1
+let NERDTreeShowHidden = 1
+
+" Toggle NERDTree with Ctrl-f
+nmap <C-f> :NERDTreeToggle<CR>
+
+" Automatically open NERDTree on Vim startup
+au VimEnter * NERDTree
+
+" Automatically close NERDTree when it's the only window/tab
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Dracula theme settings
+packadd! dracula
+colorscheme dracula
+let g:dracula_colorterm = 0
+
+" Airline theme and colorscheme
+let g:airline_theme = 'dracula'
+
+" Set encoding to UTF-8
+set encoding=UTF-8
+
+" NERDTree navigation shortcuts
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Plugin manager setup (vim-plug)
+call plug#begin('~/.vim/plugged')
+  Plug 'sheerun/vim-polyglot'
+  Plug 'pearofducks/ansible-vim'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-commentary'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'alvan/vim-closetag'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'pangloss/vim-javascript'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'morhetz/gruvbox'
+  Plug 'preservim/nerdtree'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+call plug#end()
+
+" COC settings
+let g:coc_global_extensions = ['coc-tsserver']
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+imap ii <Esc>
+
+" General settings
+set nocompatible
+filetype on
+filetype plugin on
+filetype indent on
+syntax on
+set number
+set wildmenu
+set wildmode=list:longest
+
+" GitHub copilot settings
+let g:githubcopilot#enabled = 1
+
+" Instant markdown settings
+let g:instant_markdown_theme = 'dark'
